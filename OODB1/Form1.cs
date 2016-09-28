@@ -31,6 +31,7 @@ namespace OODB1
 
         private void button1_Click(object sender, EventArgs e)//Load Button
         {
+            i = 0;
             string conS = "Data Source=(local);Integrated Security=SSPI;Initial Catalog=Dafesty";
             cn = new SqlConnection(conS);
             cm = new SqlCommand();
@@ -90,13 +91,14 @@ namespace OODB1
         private void button9_Click(object sender, EventArgs e)//Find Button
         {
             string code = textBox4.Text.ToString();
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            for (int j = 0; j < ds.Tables[0].Rows.Count; j++)
             {
-                if (ds.Tables[0].Rows[i][0].ToString() == code)
+                if (ds.Tables[0].Rows[j][0].ToString() == code)
                 {
-                    textBox1.Text = ds.Tables[0].Rows[i][0].ToString();
-                    textBox2.Text = ds.Tables[0].Rows[i][1].ToString();
-                    textBox3.Text = ds.Tables[0].Rows[i][2].ToString();
+                    textBox1.Text = ds.Tables[0].Rows[j][0].ToString();
+                    textBox2.Text = ds.Tables[0].Rows[j][1].ToString();
+                    textBox3.Text = ds.Tables[0].Rows[j][2].ToString();
+                    i = j;
                 }
             }
         }
